@@ -16,6 +16,7 @@ Usage
 
 Linux/Unix clients: run tsp-client.sh or java -jar tsp-client.jar
 
+```
 ./tsp-client.sh -h
 
 Usage ./tsp-client.sh -a <algorithm> -s <source-file> -d <directory> -g -q -r -u <url> -h -v
@@ -28,12 +29,14 @@ Usage ./tsp-client.sh -a <algorithm> -s <source-file> -d <directory> -g -q -r -u
   -u - URL to execute RFC3161 request to
   -h - (optional) this help
   -v - (optional) verbosity level, can be V1 or V2, the higher the number more verbose output
+```
   
 All other operating systems 
 
+```
 java -jar tsp-client.jar -h
  -a (--alg, --algorithm) [MD5 | SHA1 |  : TSP digest algorithm [MD5, SHA1,
- SHA256]                                : SHA256]
+                           SHA256]      : SHA256]
  -c (--cert-req)                        : Set certReq in RFC3161 request to
                                           TRUE.
  -d (--data) VAL                        : Path to file containing data
@@ -46,3 +49,4 @@ java -jar tsp-client.jar -h
  -u (--url) VAL                         : TSA URL for used to request Timestamp
                                           token. If not set it will not be used
  -v (--verbosity) [V1 | V2]             : Prints verbose output.
+```
