@@ -15,38 +15,15 @@
  *
  *
  */
+package com.github.fzilic.tsp.exceptions;
 
-package com.github.fzilic.config;
+import java.lang.Thread.UncaughtExceptionHandler;
 
-public enum PkiStatus {
-    GRANTED(0), GRANTED_WITH_MODS(1), REJECTION(2), WAITING(3), REVOCATION_WARNING(4), REVOCATION_NOTIFICATION(5), KEY_UPDATE_WARNING(6);
+public class ExceptionHandler implements UncaughtExceptionHandler {
 
-    private final int m_status;
-
-    private PkiStatus(final int p_status) {
-        m_status = p_status;
+    public void uncaughtException(final Thread p_thread, final Throwable p_throwable) {
+        System.out.println(p_throwable.getMessage());
+        p_throwable.printStackTrace(); // TODO
     }
 
-    public static final boolean isGranted(final int p_status) {
-        final PkiStatus status = forStatus(p_status);
-        if (status == null) {
-            return false;
-        }
-
-        if (GRANTED.equals(status) || GRANTED_WITH_MODS.equals(status)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public static final PkiStatus forStatus(final int p_status) {
-        for (final PkiStatus status : PkiStatus.values()) {
-            if (status.m_status == p_status) {
-                return status;
-            }
-        }
-
-        return null;
-    }
 }

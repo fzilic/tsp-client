@@ -15,7 +15,7 @@
  *
  *
  */
-package com.github.fzilic.exceptions;
+package com.github.fzilic.tsp.exceptions;
 
 @SuppressWarnings("serial")
 public class ClientException extends RuntimeException {

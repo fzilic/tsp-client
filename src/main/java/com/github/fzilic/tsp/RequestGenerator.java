@@ -16,7 +16,7 @@
  *
  */
 
-package com.github.fzilic;
+package com.github.fzilic.tsp;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,8 +28,8 @@ import org.apache.commons.io.IOUtils;
 import org.bouncycastle.tsp.TimeStampRequest;
 import org.bouncycastle.tsp.TimeStampRequestGenerator;
 
-import com.github.fzilic.config.Algorithm;
-import com.github.fzilic.exceptions.Rfc3161Exception;
+import com.github.fzilic.tsp.config.Algorithm;
+import com.github.fzilic.tsp.exceptions.Rfc3161Exception;
 
 public class RequestGenerator {
 

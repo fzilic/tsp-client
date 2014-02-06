@@ -15,7 +15,7 @@
  *
  *
  */
-package com.github.fzilic.config;
+package com.github.fzilic.tsp.config;
 
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.tsp.TSPAlgorithms;

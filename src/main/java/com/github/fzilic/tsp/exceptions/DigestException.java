@@ -15,8 +15,17 @@
  *
  *
  */
-package com.github.fzilic.config;
+package com.github.fzilic.tsp.exceptions;
 
-public enum Verbosity {
-    V1, V2;
+@SuppressWarnings("serial")
+public class DigestException extends RuntimeException {
+
+    public DigestException(final String p_message, final Throwable p_throwable) {
+        super(p_message, p_throwable);
+    }
+
+    public DigestException(final String p_message) {
+        super(p_message);
+    }
+
 }

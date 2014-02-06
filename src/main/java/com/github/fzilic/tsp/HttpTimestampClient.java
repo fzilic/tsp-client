@@ -16,7 +16,7 @@
  *
  */
 
-package com.github.fzilic;
+package com.github.fzilic.tsp;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -35,7 +35,7 @@ import org.bouncycastle.tsp.TSPException;
 import org.bouncycastle.tsp.TimeStampRequest;
 import org.bouncycastle.tsp.TimeStampResponse;
 
-import com.github.fzilic.exceptions.ClientException;
+import com.github.fzilic.tsp.exceptions.ClientException;
 
 public class HttpTimestampClient {
 

@@ -15,7 +15,7 @@
  *
  */
 
-package com.github.fzilic;
+package com.github.fzilic.tsp;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,8 +31,8 @@ import java.security.NoSuchAlgorithmException;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.io.IOUtils;
 
-import com.github.fzilic.config.Algorithm;
-import com.github.fzilic.exceptions.DigestException;
+import com.github.fzilic.tsp.config.Algorithm;
+import com.github.fzilic.tsp.exceptions.DigestException;
 
 public class DigestGenerator {
 

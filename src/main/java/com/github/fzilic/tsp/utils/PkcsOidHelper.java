@@ -1,4 +1,4 @@
-package com.github.fzilic.utils;
+package com.github.fzilic.tsp.utils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

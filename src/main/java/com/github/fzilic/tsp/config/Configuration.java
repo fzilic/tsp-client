@@ -15,7 +15,7 @@
  *
  *
  */
-package com.github.fzilic.config;
+package com.github.fzilic.tsp.config;
 
 import org.kohsuke.args4j.Option;
 

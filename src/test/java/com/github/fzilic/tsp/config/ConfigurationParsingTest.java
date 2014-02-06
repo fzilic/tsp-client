@@ -21,8 +21,8 @@ import org.junit.Test;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 
-import com.github.fzilic.config.Algorithm;
-import com.github.fzilic.config.Configuration;
+import com.github.fzilic.tsp.config.Algorithm;
+import com.github.fzilic.tsp.config.Configuration;
 
 import static org.fest.assertions.Assertions.assertThat;
 

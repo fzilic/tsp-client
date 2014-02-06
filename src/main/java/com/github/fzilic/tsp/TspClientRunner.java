@@ -16,7 +16,7 @@
  *
  */
 
-package com.github.fzilic;
+package com.github.fzilic.tsp;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -39,14 +39,14 @@ import org.bouncycastle.tsp.TimeStampToken;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 
-import com.github.fzilic.config.Algorithm;
-import com.github.fzilic.config.Configuration;
-import com.github.fzilic.config.PkiStatus;
-import com.github.fzilic.config.Verbosity;
-import com.github.fzilic.exceptions.DigestException;
-import com.github.fzilic.exceptions.ExceptionHandler;
-import com.github.fzilic.exceptions.Rfc3161Exception;
-import com.github.fzilic.utils.PkcsOidHelper;
+import com.github.fzilic.tsp.config.Algorithm;
+import com.github.fzilic.tsp.config.Configuration;
+import com.github.fzilic.tsp.config.PkiStatus;
+import com.github.fzilic.tsp.config.Verbosity;
+import com.github.fzilic.tsp.exceptions.DigestException;
+import com.github.fzilic.tsp.exceptions.ExceptionHandler;
+import com.github.fzilic.tsp.exceptions.Rfc3161Exception;
+import com.github.fzilic.tsp.utils.PkcsOidHelper;
 
 public class TspClientRunner {
 

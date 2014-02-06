@@ -15,16 +15,16 @@
  *
  *
  */
-package com.github.fzilic.exceptions;
+package com.github.fzilic.tsp.exceptions;
 
 @SuppressWarnings("serial")
-public class DigestException extends RuntimeException {
+public class Rfc3161Exception extends RuntimeException {
 
-    public DigestException(final String p_message, final Throwable p_throwable) {
+    public Rfc3161Exception(final String p_message, final Throwable p_throwable) {
         super(p_message, p_throwable);
     }
 
-    public DigestException(final String p_message) {
+    public Rfc3161Exception(final String p_message) {
         super(p_message);
     }
 
