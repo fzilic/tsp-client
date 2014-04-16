@@ -42,7 +42,7 @@ public class Configuration {
     @Option(name = "-v", aliases = { "--verbosity" }, usage = "Prints verbose output.")
     private Verbosity m_verbosity;
 
-    @Option(name = "-a", aliases = { "--alg", "--algorithm" }, usage = "TSP digest algorithm [MD5, SHA1, SHA256]")
+    @Option(name = "-a", aliases = { "--alg", "--algorithm" }, usage = "TSP digest algorithm [MD5, SHA1, SHA256, SHA384, SHA512]")
     private Algorithm m_algorithm = Algorithm.SHA1;
 
     @Option(name = "-h", aliases = { "--help", "-H" }, usage = "Prints help")

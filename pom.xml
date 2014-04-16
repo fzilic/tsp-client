@@ -17,7 +17,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 	<groupId>com.github.fzilic</groupId>
 	<artifactId>tsp-client</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 
 	<name>TSA TimeStamp Client</name>
 
