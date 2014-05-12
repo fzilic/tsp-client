@@ -7,15 +7,18 @@ _digest=
 _query=
 _reply=
 _url=
+_gen_nonce=
+_nonce=
+_policy=
 _verbosity=
 
-_options="a:s:d:gqru:hv:"
+_options="a:s:d:gqru:on:p:hv:"
 
 _script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 usage() {
   echo """
-Usage $0 -a <algorithm> -s <source-file> -d <directory> -g -q -r -u <url> -h -v
+Usage $0 -a <algorithm> -s <source-file> -d <directory> -g -q -r -u <url> -o -n <nonce> -p <policy id> -h -v
   -a - hash algorithm, can be one of the following MD5 SHA1 SHA256
   -s - file to be hashed
   -d - (optional) output directory to store intermediate files
@@ -23,6 +26,9 @@ Usage $0 -a <algorithm> -s <source-file> -d <directory> -g -q -r -u <url> -h -v
   -q - (optional) store RFC3161 query (<directory>/query.<algorithm>.tsq)
   -r - (optional) store RFC3161 reply (<directory>/reply.<algorithm>.tsr)
   -u - URL to execute RFC3161 request to
+  -o - (optional) - generate nonce integer
+  -n - (optional) - use specified nonce integer
+  -p - (optional) - request timestemp using policy OID
   -h - (optional) this help
   -v - (optional) verbosity level, can be V1 or V2, the higher the number more verbose output
 """ >&2
@@ -33,7 +39,7 @@ while getopts $_options _option; do
     a )
       _alg=$(echo $OPTARG | tr '[:lower:]' '[:upper:]')
 
-      if [[ ! $_alg =~ ^MD5|SHA1|SHA256$ ]]; then
+      if [[ ! $_alg =~ ^MD5|SHA1|SHA256|SHA384|SHA512$ ]]; then
         echo "Invalid hashing algorithm $_alg" >&2
         usage
         exit 1
@@ -64,6 +70,15 @@ while getopts $_options _option; do
       ;;
     u )
       _url=$OPTARG
+      ;;
+    o )
+      _gen_nonce="t"
+      ;;
+    n )
+      _nonce=$OPTARG
+      ;;
+    p )
+      _policy=$OPTARG
       ;;
     v )
       _verbosity=$OPTARG
@@ -128,6 +143,18 @@ fi
 
 if [ -n "$_url" ]; then
   _command_args=$_command_args" -u $_url"
+fi
+
+if [ -n "$_gen_nonce" ]; then
+  _command_args=$_command_args" -o "
+fi
+
+if [ -n "$_nonce" ]; then
+  _command_args=$_command_args" -n $_nonce"
+fi
+
+if [ -n "$_policy" ]; then
+  _command_args=$_command_args" -p $_policy"
 fi
 
 if [ -n "$_verbosity" ]; then

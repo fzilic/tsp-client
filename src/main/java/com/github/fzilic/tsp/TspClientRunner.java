@@ -23,8 +23,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
+import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
-
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.io.IOUtils;
@@ -43,6 +43,7 @@ import com.github.fzilic.tsp.config.Algorithm;
 import com.github.fzilic.tsp.config.Configuration;
 import com.github.fzilic.tsp.config.PkiStatus;
 import com.github.fzilic.tsp.config.Verbosity;
+import com.github.fzilic.tsp.exceptions.ClientException;
 import com.github.fzilic.tsp.exceptions.DigestException;
 import com.github.fzilic.tsp.exceptions.ExceptionHandler;
 import com.github.fzilic.tsp.exceptions.Rfc3161Exception;
@@ -91,6 +92,22 @@ public class TspClientRunner {
         }
 
         final RequestGenerator requestGenerator = new RequestGenerator(CONFIGURATION.getAlgorithm(), digestGenerator.digest()).certReq(CONFIGURATION.isCertReq());
+
+        if (CONFIGURATION.getNonce() != null && CONFIGURATION.isGenNonce()) {
+            throw new ClientException("Invalid usage, can't generate and set nonce at once");
+        }
+
+        if (CONFIGURATION.isGenNonce()) {
+            requestGenerator.nonce(NonceGenerator.generateNonce());
+        }
+
+        if (CONFIGURATION.getNonce() != null) {
+            requestGenerator.nonce(new BigInteger(CONFIGURATION.getNonce(), 10));
+        }
+
+        if (CONFIGURATION.getPolicyId() != null) {
+            requestGenerator.policyId(CONFIGURATION.getPolicyId());
+        }
 
         final TimeStampRequest timeStampRequest = requestGenerator.request();
 

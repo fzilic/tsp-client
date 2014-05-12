@@ -45,6 +45,15 @@ public class Configuration {
     @Option(name = "-a", aliases = { "--alg", "--algorithm" }, usage = "TSP digest algorithm [MD5, SHA1, SHA256, SHA384, SHA512]")
     private Algorithm m_algorithm = Algorithm.SHA1;
 
+    @Option(name = "-o", aliases = { "--gen-nonce" }, usage = "Generate nonce integer for request")
+    private boolean   m_genNonce  = false;
+
+    @Option(name = "-n", aliases = { "--nonce" }, usage = "Use specified integer value for nonce")
+    private String    m_nonce;
+
+    @Option(name = "-p", aliases = { "--policy", "--policy-oid" }, usage = "Request Timestamp for policy OID")
+    private String    m_policyId;
+
     @Option(name = "-h", aliases = { "--help", "-H" }, usage = "Prints help")
     private boolean   m_helpAsked;
 
@@ -58,6 +67,14 @@ public class Configuration {
 
     public String getDigestFile() {
         return m_digestFile;
+    }
+
+    public String getNonce() {
+        return m_nonce;
+    }
+
+    public String getPolicyId() {
+        return m_policyId;
     }
 
     public String getQueryFile() {
@@ -78,6 +95,10 @@ public class Configuration {
 
     public boolean isCertReq() {
         return m_certReq;
+    }
+
+    public boolean isGenNonce() {
+        return m_genNonce;
     }
 
     public boolean isHelpAsked() {
@@ -104,8 +125,20 @@ public class Configuration {
         m_digestFile = p_digestFile;
     }
 
+    public void setGenNonce(final boolean p_genNonce) {
+        m_genNonce = p_genNonce;
+    }
+
     public void setHelpAsked(final boolean p_helpAsked) {
         m_helpAsked = p_helpAsked;
+    }
+
+    public void setNonce(final String p_nonce) {
+        m_nonce = p_nonce;
+    }
+
+    public void setPolicyId(final String p_policyId) {
+        m_policyId = p_policyId;
     }
 
     public void setQueryFile(final String p_queryFile) {

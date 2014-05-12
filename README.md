@@ -3,7 +3,7 @@ tsp-client
 
 TSA TimeStamp Client
 
-Simple RFC3161 console mode client. 
+Simple RFC3161 console mode client.
 
 System requirements
 -------------------
@@ -19,7 +19,7 @@ Linux/Unix clients: run tsp-client.sh or java -jar tsp-client.jar
 ```
 ./tsp-client.sh -h
 
-Usage ./tsp-client.sh -a <algorithm> -s <source-file> -d <directory> -g -q -r -u <url> -h -v
+Usage ./tsp-client.sh -a <algorithm> -s <source-file> -d <directory> -g -q -r -u <url> -o -n <nonce> -p <policy id> -h -v
   -a - hash algorithm, can be one of the following MD5 SHA1 SHA256
   -s - file to be hashed
   -d - (optional) output directory to store intermediate files
@@ -27,21 +27,27 @@ Usage ./tsp-client.sh -a <algorithm> -s <source-file> -d <directory> -g -q -r -u
   -q - (optional) store RFC3161 query (<directory>/query.<algorithm>.tsq)
   -r - (optional) store RFC3161 reply (<directory>/reply.<algorithm>.tsr)
   -u - URL to execute RFC3161 request to
+  -o - (optional) - generate nonce integer
+  -n - (optional) - use specified nonce integer
+  -p - (optional) - request timestemp using policy OID
   -h - (optional) this help
   -v - (optional) verbosity level, can be V1 or V2, the higher the number more verbose output
 ```
-  
-All other operating systems 
+
+All other operating systems
 
 ```
 java -jar tsp-client.jar -h
  -a (--alg, --algorithm) [MD5 | SHA1 |  : TSP digest algorithm [MD5, SHA1,
-                           SHA256]      : SHA256]
+ SHA256 | SHA384 | SHA512]              : SHA256, SHA384, SHA512]
  -c (--cert-req)                        : Set certReq in RFC3161 request to
                                           TRUE.
  -d (--data) VAL                        : Path to file containing data
  -g (--digest) VAL                      : Store digest to this file
  -h (--help, -H)                        : Prints help
+ -n (--nonce) VAL                       : Use specified integer value for nonce
+ -o (--gen-nonce)                       : Generate nonce integer for request
+ -p (--policy, --policy-oid) VAL        : Request Timestamp for policy OID
  -q (--query) VAL                       : Timestamp Query file (.tsq) path. If
                                           not set it will not be stored.
  -r (--resp) VAL                        : Timestamp Response file (.tsr) path.

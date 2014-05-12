@@ -22,9 +22,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-
+import java.math.BigInteger;
 
 import org.apache.commons.io.IOUtils;
+import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.tsp.TimeStampRequest;
 import org.bouncycastle.tsp.TimeStampRequestGenerator;
 
@@ -39,6 +40,8 @@ public class RequestGenerator {
 
     private final byte[]                    m_digest;
 
+    private BigInteger                      m_nonce;
+
     private TimeStampRequest                m_request;
 
     public RequestGenerator(final Algorithm p_algorithm, final byte[] p_digest) {
@@ -52,9 +55,22 @@ public class RequestGenerator {
 
     }
 
+    public void nonce(final BigInteger p_nonce) {
+        m_nonce = p_nonce;
+    }
+
+    public void policyId(final String p_policyId) {
+        m_generator.setReqPolicy(new ASN1ObjectIdentifier(p_policyId));
+    }
+
     public TimeStampRequest request() {
         if (m_request == null) {
-            m_request = m_generator.generate(m_algorithm.getTspAlgorithm(), m_digest);
+            if (m_nonce == null) {
+                m_request = m_generator.generate(m_algorithm.getTspAlgorithm(), m_digest);
+            }
+            else {
+                m_request = m_generator.generate(m_algorithm.getTspAlgorithm(), m_digest, m_nonce);
+            }
         }
 
         return m_request;
